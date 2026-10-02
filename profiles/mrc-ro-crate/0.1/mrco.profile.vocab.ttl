@@ -1,0 +1,31 @@
+@prefix prof: <http://www.w3.org/ns/dx/prof/> .
+@prefix skos: <http://www.w3.org/2004/02/skos/core#> .
+@prefix owl:  <http://www.w3.org/2002/07/owl#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix xsd:  <http://www.w3.org/2001/XMLSchema#> .
+@prefix mrco: <https://infra.mrc.vliz.be/schema/> .
+@prefix role: <https://infra.mrc.vliz.be/profile/role/> .
+
+<https://infra.mrc.vliz.be/profile/vocab> a owl:Ontology ;
+    rdfs:label "MRCO profile vocabulary"@en .
+
+role:closureGraph a prof:ResourceRole ;
+    rdfs:isDefinedBy <https://infra.mrc.vliz.be/profile/vocab> ;
+    skos:prefLabel "closure graph"@en ;
+    skos:definition """RDF file containing all resources of the namespace
+        https://infra.mrc.vliz.be/ referenced by a crate. Optional: a crate
+        MAY contain at most one. If present it SHOULD validate against the
+        profile's constraints (SHACL) artifact."""@en ;
+    mrco:cardinality "0..1" ;
+    mrco:namespace "https://infra.mrc.vliz.be/"^^xsd:anyURI .
+
+mrco:cardinality a owl:DatatypeProperty ;
+    rdfs:label "cardinality"@en ;
+    rdfs:comment "Allowed number of resources with this role in a conforming crate, as a min..max range."@en ;
+    rdfs:domain prof:ResourceRole .
+
+mrco:namespace a owl:DatatypeProperty ;
+    rdfs:label "namespace"@en ;
+    rdfs:comment "URI namespace whose resources a role-bearing artifact is expected to cover."@en ;
+    rdfs:domain prof:ResourceRole ;
+    rdfs:range xsd:anyURI .

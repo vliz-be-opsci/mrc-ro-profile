@@ -1,0 +1,67 @@
+$:
+  version: "1.3"
+
+ro-crate-metadata.json:
+  $type: CreativeWork
+  about: ./
+  creator: https://orcid.org/0000-0001-8327-0142
+  conformsTo: https://w3id.org/ro/crate/1.3
+
+./:
+  $type:
+    - Dataset
+    - Profile
+  identifier: https://w3id.org/vliz-be-opsci/profiles/mrc-ro-crate/0.1
+  version: "0.1.0"
+  distribution: https://infra.vliz.be/profiles/mrc-ro-crate/0.1
+  author: https://orcid.org/0000-0001-8327-0142
+  hasPart:
+    - mrco.shacl.ttl
+    - mrco.profile.vocab.ttl
+  hasResource:
+    - "#hasShape"
+    - "#hasVocabulary"
+    - "#hasClosureGraph"
+
+"#hasShape":
+  $type: ResourceDescriptor
+  hasRole: http://www.w3.org/ns/dx/prof/role/constraints
+  hasArtifact: mrco.shacl.ttl
+
+mrco.shacl.ttl:
+  $type: File
+  description: SHACL shapes constraining all triples contained in any mrc-ro-crate.
+  name: marine robotics center SHACL shapes
+  identifier: https://infra.vliz.be/schema/mrco
+  sameAs: https://infra.vliz.be/schema/mrco
+  encodingFormat: text/turtle
+  conformsTo: https://www.w3.org/TR/shacl/
+
+"#hasVocabulary":
+  $type: ResourceDescriptor
+  hasRole: http://www.w3.org/ns/dx/prof/role/vocabulary
+  hasArtifact: mrco.profile.vocab.ttl
+  format: text/turtle
+  description: Vocabulary defining the resource roles introduced by this profile, notably the closureGraph role.
+
+"#hasClosureGraph":
+  $type: ResourceDescriptor
+  hasRole: https://infra.mrc.vliz.be/profile/role/closureGraph
+  format: text/turtle
+  description: >-
+    OPTIONAL. A conforming crate MAY contain one closure graph: an RDF file
+    describing every resource of the namespace https://infra.mrc.vliz.be/
+    used in this crate. If present, it SHOULD validate against mrco.shacl.ttl.
+  conformsTo: mrco.shacl.ttl
+
+mrco.profile.vocab.ttl:
+  $type: File
+  name: MRCO profile vocabulary
+  description: Defines the closureGraph resource role and the properties used to describe it.
+  encodingFormat: text/turtle
+  sameAs: https://infra.mrc.vliz.be/profile/vocab
+  contentUrl: https://infra.mrc.vliz.be/profile/vocab
+
+https://orcid.org/0000-0001-8327-0142:
+  $type: Person
+

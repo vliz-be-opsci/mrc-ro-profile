@@ -1,0 +1,194 @@
+@base <https://infra.mrc.vliz.be/>.
+@prefix ns: <https://infra.mrc.vliz.be/ns>.
+@prefix parameter: <https://infra.mrc.vliz.be/ns/parameter#>.
+@prefix me: <https://infra.mrc.vliz.be/schema/parameter#>.
+@prefix mrco: <https://infra.mrc.vliz.be/ns/mrco#>.
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>.
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#>.
+@prefix ssn: <http://www.w3.org/ns/ssn/>.
+@prefix sosa: <http://www.w3.org/ns/sosa/>.
+@prefix schema: <http://schema.org/>.
+@prefix skos: <http://www.w3.org/2004/02/skos/core#>.
+@prefix qudt: <http://qudt.org/schema/qudt/>.
+@prefix quantitykind: <http://qudt.org/vocab/quantitykind/>.
+@prefix unit: <http://qudt.org/vocab/unit/>.
+@prefix sh: <http://www.w3.org/ns/shacl#>.
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#>.
+@prefix wikiproperty: <https://www.wikidata.org/wiki/Property:>.
+
+https://infra.mrc.vliz.be/schema/mrco> a owl:Ontology ;
+    rdfs:label "MRCO SHACL Constraints"@en .
+
+### Properties ###
+
+me:SosaPropertyShape a sh:NodeShape;
+    sh:targetClass sosa:Property;
+    sh:property [
+        sh:path rdfs:label;
+        sh:minCount 1;
+        sh:datatype rdf:langString;
+        sh:message "Every sosa:Property must have at least one rdfs:label."@en;
+    ];
+    sh:property [
+        sh:path skos:exactMatch;
+        sh:nodeKind sh:IRI;
+        sh:message "Every sosa:Property MAY have a skos:exactMatch to a controlled vocabulary term (e.g. NERC P01/P02)."@en;
+    ];
+    sh:property [
+        sh:path qudt:hasQuantityKind;
+        sh:minCount 1;
+        sh:maxCount 1;
+        sh:nodeKind sh:IRI;
+        sh:message "Every sosa:Property must declare a QUDT quantity kind (qudt:hasQuantityKind)."@en;
+    ] .
+
+### Sensors ###
+
+me:SosaSensorShape a sh:NodeShape;
+    sh:targetClass sosa:Sensor;
+    sh:property [
+        sh:path rdfs:label;
+        sh:minCount 1;
+        sh:datatype rdf:langString;
+        sh:message "Every sosa:Sensor must have at least one rdfs:label."@en;
+    ];
+    sh:property [
+        sh:path skos:exactMatch;
+        sh:nodeKind sh:IRI;
+        sh:message "Every sosa:Sensor MAY have a skos:exactMatch to a controlled vocabulary term."@en;
+    ];
+
+    sh:property [
+        sh:path skos:notation;
+        sh:datatype rdf:langString;
+        sh:minCount 1;
+        sh:maxCount 1;
+        sh:message "Every sosa:Sensor MUST have a computer-interpretable string."@en;
+    ];
+
+    sh:property [
+        sh:path schema:serialNumber;
+        sh:minCount 1;
+        sh:maxCount 1;
+        sh:datatype rdf:langString;
+        sh:message "Every sosa:Sensor must have a schema:serialNumber."@en;
+    ];
+
+    sh:property [
+        sh:path schema:model;
+        sh:maxCount 1;
+        sh:nodeKind sh:IRI;
+        sh:class schema:ProductModel;
+        sh:message "Every sosa:Sensor may have a schema:model, referencing a schema:ProductModel."@en;
+    ];
+
+    sh:property [
+        sh:path sosa:observes;
+            sh:minCount 1;
+            sh:class sosa:Property;
+            sh:nodeKind sh:IRI;
+            sh:message "Every sosa:Sensor must observe (sosa:observes) at least one sosa:Property."@en;
+        ] .
+
+
+### Platforms ###
+
+me:SosaPlatformShape a sh:NodeShape;
+    sh:targetClass sosa:Platform;
+    sh:property [
+        sh:path rdfs:label;
+        sh:minCount 1;
+        sh:datatype rdf:langString;
+        sh:message "Every sosa:Platform must have at least one rdfs:label."@en;
+    ];
+    sh:property [
+        sh:path skos:exactMatch;
+        sh:minCount 1;
+        sh:nodeKind sh:IRI;
+        sh:message "Every sosa:Platform must have a skos:exactMatch to a controlled vocabulary term (e.g. NERC L06 SeaVoX Platform Categories)."@en;
+    ];
+    sh:property [
+        sh:path wikiproperty:P4136;
+        sh:minCount 1;
+        sh:maxCount 1;
+        sh:datatype rdf:langString;
+        sh:message "Every sosa:Platform must have a WIGOS ID."@en;
+    ];
+    sh:property [
+        sh:path wikiproperty:P4136;
+        sh:minCount 0;
+        sh:maxCount 1;
+        sh:datatype rdf:langString;
+        sh:message "Every sosa:Platform may have a WMO ID."@en;
+    ];
+    sh:property [
+        sh:path rdf:type;
+        sh:qualifiedValueShape [ sh:class sosa:Platform ];
+        sh:qualifiedMinCount 1;
+        sh:message "Every sosa:Platform individual should be typed with a specific platform class (e.g. me:USV, me:AUV, me:glider) rather than only sosa:Platform."@en;
+    ] .
+
+me:SosaDeploymentShape a sh:NodeShape;
+    sh:targetClass sosa:Deployment;
+    sh:property [
+        sh:path rdfs:label;
+        sh:minCount 1;
+        sh:datatype rdf:langString;
+        sh:message "Every sosa:Deployment must have at least one rdfs:label."@en;
+    ];
+    sh:property [
+        sh:path sosa:deployedOnPlatform;
+        sh:minCount 1;
+        sh:maxCount 1;
+        sh:nodeKind sh:IRI;
+        sh:message "Every sosa:Deployment must be linked to a single sosa:Platform."@en;
+    ];
+    sh:property [
+        sh:path sosa:deployedSystem;
+        sh:minCount 1;
+        sh:nodeKind sh:IRI;
+        sh:class sosa:Sensor;
+        sh:message "Every sosa:Deployment must have at least one sosa:Sensor."@en;
+    ] .
+
+### Trips ###
+
+me:TripShape a sh:NodeShape ;
+    sh:targetClass mrco:Trip ;
+
+    sh:property [
+        sh:path mrco:hasDeployment ;
+        sh:minCount 1 ;
+        sh:maxCount 1 ;
+        sh:class sosa:Deployment ;
+        sh:message "A Trip must have exactly one sosa:Deployment associated via mrco:hasDeployment."@en ;
+    ] ;
+
+    sh:property [
+        sh:path mrco:hasPurpose ;
+        sh:minCount 1 ;
+        sh:class mrco:TripPurpose ;
+        sh:message "A Trip must have at least one mrco:TripPurpose associated via mrco:hasPurpose."@en ;
+    ] ;
+
+    sh:property [
+        sh:path mrco:hasStartTime ;
+        sh:minCount 1 ;
+        sh:maxCount 1 ;
+        sh:datatype xsd:dateTime ;
+        sh:message "A Trip must have exactly one start time of type xsd:dateTime."@en ;
+    ] ;
+
+    sh:property [
+        sh:path mrco:hasEndTime ;
+        sh:minCount 1 ;
+        sh:maxCount 1 ;
+        sh:datatype xsd:dateTime ;
+        sh:message "A Trip must have exactly one end time of type xsd:dateTime."@en ;
+    ] .
+
+### Datasets ###
+# TODO: add in constraints on the dataset description
+me:DatasetShape a sh:NodeShape;
+    sh:targetClass schema:Dataset 
+    .
