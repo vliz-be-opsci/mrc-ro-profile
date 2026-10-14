@@ -1,5 +1,5 @@
 PROFILE_VERSION := 0.1
-PROFILE_DIR := profiles/mrc-ro-crate/$(PROFILE_VERSION)
+PROFILE_DIR := crate-profiles/mrc-ro-crate/$(PROFILE_VERSION)
 
 BLUEPRINT := blueprints/mrc-crate.0.1.yaml
 SHAPE := mrco.shacl.ttl

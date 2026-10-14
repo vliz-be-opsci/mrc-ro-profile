@@ -15,6 +15,7 @@
 @prefix sh: <http://www.w3.org/ns/shacl#>.
 @prefix xsd: <http://www.w3.org/2001/XMLSchema#>.
 @prefix wikiproperty: <https://www.wikidata.org/wiki/Property:>.
+@prefix profile: <https://infra.mrc.vliz.be/ns/profile#>.
 
 https://infra.mrc.vliz.be/schema/mrco> a owl:Ontology ;
     rdfs:label "MRCO SHACL Constraints"@en .
@@ -188,7 +189,10 @@ me:TripShape a sh:NodeShape ;
     ] .
 
 ### Datasets ###
-# TODO: add in constraints on the dataset description
 me:DatasetShape a sh:NodeShape;
-    sh:targetClass schema:Dataset 
-    .
+    sh:targetClass :ObservationCollection ;
+    sh:property [
+        sh:path sosa:madeBySensor ;
+        sh:minCount 1 ;
+        sh:class sosa:Sensor ;
+    ] .

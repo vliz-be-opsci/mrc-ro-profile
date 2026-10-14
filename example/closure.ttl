@@ -1,0 +1,35 @@
+@prefix ns1: <http://schema.org/> .
+@prefix ns2: <http://qudt.org/schema/qudt/> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix skos: <http://www.w3.org/2004/02/skos/core#> .
+@prefix sosa: <http://www.w3.org/ns/sosa/> .
+
+<https://infra.mrc.vliz.be/id/sensor/Septentrio_GNSSAsteRx> a <https://infra.mrc.vliz.be/ns/sensor#AsteRx-U3> ;
+    rdfs:label "Septentrio GNSSAsteRx" ;
+    ns1:serialNumber "8301132" ;
+    skos:notation "Septentrio_GNSSAsteRx" .
+
+<https://infra.mrc.vliz.be/ns/parameter#Latitude> a sosa:Property ;
+    rdfs:label "Latitude Parameter"@en ;
+    ns2:hasQuantityKind <http://qudt.org/vocab/quantitykind/Angle> ;
+    skos:exactMatch <https://vocab.nerc.ac.uk/collection/P01/current/ALATGP01/> .
+
+<https://infra.mrc.vliz.be/ns/parameter#Longitude> a sosa:Property ;
+    rdfs:label "Longitude Parameter"@en ;
+    ns2:hasQuantityKind <http://qudt.org/vocab/quantitykind/Angle> ;
+    skos:exactMatch <https://vocab.nerc.ac.uk/collection/P01/current/ALONGP01/> .
+
+<https://infra.mrc.vliz.be/ns/sensor#AsteRx-U3> rdfs:label "GNSS Septentrio AsteRx-U3 Marine"@en ;
+    ns1:model <https://infra.mrc.vliz.be/ns/sensor#Septentrio_AsteRx-U3> ;
+    rdfs:comment "GNSS sensor"@en ;
+    rdfs:subClassOf ns1:Thing,
+        sosa:Sensor ;
+    sosa:observes <https://infra.mrc.vliz.be/ns/parameter#Latitude>,
+        <https://infra.mrc.vliz.be/ns/parameter#Longitude> .
+
+<https://infra.mrc.vliz.be/ns/sensor#Septentrio> a ns1:Organization ;
+    ns1:name "Septentrio" .
+
+<https://infra.mrc.vliz.be/ns/sensor#Septentrio_AsteRx-U3> a ns1:ProductModel ;
+    ns1:manufacturer <https://infra.mrc.vliz.be/ns/sensor#Septentrio> ;
+    ns1:name "AsteRx-U3 Marine" .

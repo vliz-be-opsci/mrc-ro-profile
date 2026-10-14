@@ -1,0 +1,1 @@
+We want to use this blueprints with py-sema

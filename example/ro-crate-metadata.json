@@ -1,0 +1,71 @@
+{
+  "@context": [
+    "https://w3id.org/ro/crate/1.3/context",
+    "https://w3id.org/vliz-be-opsci/crate-profiles/mrc-ro-crate/0.1/context"
+
+  ],
+  "@graph": [
+    {
+      "@id": "ro-crate-metadata.json",
+      "@type": "CreativeWork",
+      "about": { "@id": "./" },
+      "conformsTo": { "@id": "https://w3id.org/ro/crate/1.3" }
+    },
+    {
+      "@id": "./",
+      "@type": "Dataset",
+      "name": "Example CTD casts, demonstration cruise",
+      "description": "Example crate packaging an observation collection together with a closure graph.",
+      "datePublished": "2026-10-09",
+      "license": { "@id": "https://creativecommons.org/licenses/by/4.0/" },
+      "conformsTo": { "@id": "https://w3id.org/vliz-be-opsci/crate-profiles/mrc-ro-crate/0.1" },
+      "hasPart": [
+        { "@id": "observations.csv" },
+        { "@id": "closure.ttl" }
+      ],
+      "hasResource": [
+        { "@id": "#hasClosureGraph" }
+      ]   
+    },
+    {
+      "@id": "https://w3id.org/vliz-be-opsci/crate-profiles/mrc-ro-crate/0.1",
+      "@type": ["CreativeWork", "Profile"],
+      "name": "VLIZ MRC RO Crate Profile",
+      "version": "0.1.0"
+    },
+    {
+      "@id": "https://infra.mrc.vliz.be/id/sensor/123",
+      "@type": "http://www.w3.org/ns/sosa/Sensor",
+      "name": "CTD sensor 123"
+    },
+    {
+      "@id": "observations.csv",
+      "@type": [
+        "File", 
+        "ObservationCollection"
+        ],
+      "name": "Temperature and salinity observations",
+      "description": "Temperature and salinity observations made by a single sensor.",
+      "encodingFormat": "text/csv",
+      "madeBySensor": { "@id": "https://infra.mrc.vliz.be/sensor/123" }
+    },
+    {
+      "@id": "closure.ttl",
+      "@type": [
+        "File",
+        "RdfDataset"
+      ],
+      "name": "Closure graph",
+      "description": "Description of the resources of https://infra.mrc.vliz.be/ used in this crate.",
+      "additionalType": { "@id": "https://infra.mrc.vliz.be/profile/vocab#ClosureGraph" },
+      "encodingFormat": "text/turtle"
+    },
+    {
+      "@id": "#hasClosureGraph",
+      "@type": "ResourceDescriptor",
+      "hasRole": { "@id": "https://infra.mrc.vliz.be/ns/profile#closureGraph" },
+      "hasArtifact": { "@id": "closure.ttl" },
+      "description": "Closure graph of all the resources in the https://infra.mrc.vliz.be/ namespace referred to in this crate."
+    }
+  ]
+}

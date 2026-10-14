@@ -1,5 +1,12 @@
 {
-    "@context": "https://w3id.org/ro/crate/1.3/context",
+    "@context": [
+        "https://w3id.org/ro/crate/1.3/context",
+        {
+            "madeBySensor": "http://www.w3.org/ns/sosa/madeBySensor",
+            "ObservationCollection": "http://www.w3.org/ns/sosa/ObservationCollection",
+            "RdfDataset": "https://www.w3.org/TR/void/Dataset"
+        }
+    ],
     "@graph": [
         {
             "@id": "ro-crate-metadata.json",
@@ -35,8 +42,7 @@
 
             "hasResource": [
                 { "@id": "#hasShape" },
-                { "@id": "#hasVocabulary" },
-                { "@id": "#hasClosureGraph" }
+                { "@id": "#hasVocabulary" }
             ]        
         },
         { 
@@ -60,14 +66,7 @@
         "@type": "ResourceDescriptor",
         "hasRole": { "@id": "http://www.w3.org/ns/dx/prof/role/vocabulary" },
         "hasArtifact": { "@id": "mrco.profile.vocab.ttl" },
-        "description": "Vocabulary defining the resource roles introduced by this profile, notably the closureGraph role."
-        },
-        {
-        "@id": "#hasClosureGraph",
-        "@type": "ResourceDescriptor",
-        "hasRole": { "@id": "https://infra.mrc.vliz.be/ns/crate-profile-role#closureGraph" },
-        "description": "OPTIONAL. A conforming crate MAY contain one closure graph: an RDF file describing every resource of the namespace https://infra.mrc.vliz.be/ used in this crate. If present, it SHOULD validate against mrco.shacl.ttl.",
-        "conformsTo": { "@id": "mrco.shacl.ttl" }
+        "description": "Vocabulary defining the resource roles introduced by this profile."
         },
         {
         "@id": "mrco.profile.vocab.ttl",
@@ -83,11 +82,22 @@
             "@type": "DataDownload",
             "encodingFormat": ["application/zip", {"@id": "https://www.nationalarchives.gov.uk/PRONOM/x-fmt/263"}],
             "conformsTo": { "@id": "https://w3id.org/ro/crate" },
-            "downloadUrl": "FIXME"
+            "downloadUrl": "https://gitlab.com/vliz-data-engineering/mrc-ro-crate/-/archive/v0.1.0.zip"
         },
         {
         "@id": "https://orcid.org/0000-0001-8327-0142",
         "@type": "Person"
+        },
+        {
+            "@id": "https://gitlab.com/vliz-data-engineering/mrc-ro-crate/-/raw/main/example/ro-crate-metadata.json",
+            "@type": "Dataset",
+            "conformsTo": {
+                "@id": "https://w3id.org/vliz-be-opsci/crate-profiles/mrc-ro-crate/0.1"
+            },
+            "name": "Example dataset for MRC RO-Crate specification",
+            "license": {
+                "@id": "https://creativecommons.org/publicdomain/zero/1.0/"
+            }
         }
     ]
 }

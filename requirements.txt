@@ -1,2 +1,0 @@
-"roc-validator<=0.12"
-"pysema"
