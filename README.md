@@ -25,7 +25,7 @@ The Profile Crate gathers the following resources. Each is declared with a `Reso
 |---|---|---|
 | `SPEC.md` (this document) | `specification` | Normative human-readable description of the profile. |
 | `mrco.shacl.ttl` | `constraints` | SHACL shapes. Every conforming crate MUST validate against them (see 3.3). |
-| `mrco.profile.vocab.ttl` | `vocabulary` | Vocabulary introduced by the profile itself, including the class `mrcp:ClosureGraph` (see 3.5). |
+| `mrco.profile.vocab.ttl` | `vocabulary` | Vocabulary introduced by the profile itself, including the class `ClosureGraph` (see 3.4). |
 
 
 ## 3. Requirements on conforming crates
