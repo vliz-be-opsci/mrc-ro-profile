@@ -1,7 +1,7 @@
 # VLIZ MRC RO-Crate Profile — Specification
 
-- **Profile URI:** `https://w3id.org/vliz-be-opsci/crate-profiles/mrc-ro-crate/0.1`
-- **Profile of**: [MRC Ro-Crate](https://w3id.org/vliz-be-opsci/crate-profiles/mrc-ro-crate/0.1)
+- **Profile URI:** `https://w3id.org/vliz-be-opsci/crate-profiles/mrc-ro-profile/0.1`
+- **Profile of**: [MRC Ro-Crate](https://w3id.org/vliz-be-opsci/crate-profiles/mrc-ro-profile/0.1)
 - **Version:** 0.1
 - **Status:** Draft
 - **Author:** Flanders Marine Institute (VLIZ), Marine Robotics Center
@@ -34,7 +34,7 @@ A crate is a *conforming crate* if it satisfies all MUST-level requirements in t
 
 ### 3.1 Base specification
 
-A conforming crate MUST be a valid RO-Crate and MUST declare conformance to [MRC RO-Crate](https://w3id.org/vliz-be-opsci/crate-profiles/mrc-ro-crate/0.1) on the RO-Crate Metadata Descriptor (`ro-crate-metadata.json`).
+A conforming crate MUST be a valid RO-Crate and MUST declare conformance to [MRC RO-Profile](https://w3id.org/vliz-be-opsci/crate-profiles/mrc-ro-profile/0.1) on the RO-Crate Metadata Descriptor (`ro-crate-metadata.json`).
 
 ### 3.2 Declaring conformance
 
@@ -49,10 +49,10 @@ The crate MUST contain a contextual entity for the profile, with `@type` includi
 {
   "@id": "./",
   "@type": "Dataset",
-  "conformsTo": { "@id": "https://w3id.org/vliz-be-opsci/crate-profiles/mrc-ro-crate/0.1" }
+  "conformsTo": { "@id": "https://w3id.org/vliz-be-opsci/crate-profiles/mrc-ro-profile/0.1" }
 },
 {
-  "@id": "https://w3id.org/vliz-be-opsci/crate-profiles/mrc-ro-crate/0.1",
+  "@id": "https://w3id.org/vliz-be-opsci/crate-profiles/mrc-ro-profile/0.1",
   "@type": ["CreativeWork", "Profile"],
   "name": "VLIZ MRC RO Crate Profile",
   "version": "0.1.0"

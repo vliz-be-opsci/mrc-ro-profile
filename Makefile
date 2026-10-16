@@ -1,11 +1,11 @@
 PROFILE_VERSION := 0.1
-PROFILE_DIR := crate-profiles/mrc-ro-crate/$(PROFILE_VERSION)
+PROFILE_DIR := profiles/mrc-ro-profile/$(PROFILE_VERSION)
 
 BLUEPRINT := blueprints/mrc-crate.0.1.yaml
 SHAPE := mrco.shacl.ttl
 VOCABULARY := mrco.profile.vocab.ttl
 
-CRATE_DIR := build/mrc-ro-crate-profile
+CRATE_DIR := build/mrc-ro-profile
 CRATE_METADATA := $(CRATE_DIR)/ro-crate-metadata.json
 
 PYTHON_ENV := uv run

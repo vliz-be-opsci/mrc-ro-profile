@@ -27,7 +27,7 @@
                 "Dataset",
                 "Profile"
             ],
-            "identifier": "https://w3id.org/vliz-be-opsci/crate-profiles/mrc-ro-crate/0.1",
+            "identifier": "https://w3id.org/vliz-be-opsci/crate-profiles/mrc-ro-profile/0.1",
             "version": "0.1.0",
             "distribution": {"@id": "mrc-profile-0.1.zip"},
             "author": {"@id": "https://orcid.org/0000-0001-8327-0142"},
@@ -82,17 +82,17 @@
             "@type": "DataDownload",
             "encodingFormat": ["application/zip", {"@id": "https://www.nationalarchives.gov.uk/PRONOM/x-fmt/263"}],
             "conformsTo": { "@id": "https://w3id.org/ro/crate" },
-            "downloadUrl": "https://gitlab.com/vliz-data-engineering/mrc-ro-crate/-/archive/v0.1.0.zip"
+            "downloadUrl": "https://github.com/vliz-be-opsci/mrc-ro-profile/archive/refs/tags/v0.1.0.zip"
         },
         {
         "@id": "https://orcid.org/0000-0001-8327-0142",
         "@type": "Person"
         },
         {
-            "@id": "https://gitlab.com/vliz-data-engineering/mrc-ro-crate/-/raw/main/example/ro-crate-metadata.json",
+            "@id": "https://github.com/vliz-be-opsci/mrc-ro-profile/raw/main/example/ro-crate-metadata.json",
             "@type": "Dataset",
             "conformsTo": {
-                "@id": "https://w3id.org/vliz-be-opsci/crate-profiles/mrc-ro-crate/0.1"
+                "@id": "https://w3id.org/vliz-be-opsci/crate-profiles/mrc-ro-profile/0.1"
             },
             "name": "Example dataset for MRC RO-Crate specification",
             "license": {
