@@ -1,7 +1,7 @@
 {
   "@context": [
     "https://w3id.org/ro/crate/1.3/context",
-    "https://w3id.org/vliz-be-opsci/crate-profiles/mrc-ro-crate/0.1/context"
+    "https://w3id.org/vliz-be-opsci/crate-profiles/mrc-ro-profile/0.1/context"
 
   ],
   "@graph": [
@@ -18,7 +18,7 @@
       "description": "Example crate packaging an observation collection together with a closure graph.",
       "datePublished": "2026-10-09",
       "license": { "@id": "https://creativecommons.org/licenses/by/4.0/" },
-      "conformsTo": { "@id": "https://w3id.org/vliz-be-opsci/crate-profiles/mrc-ro-crate/0.1" },
+      "conformsTo": { "@id": "https://w3id.org/vliz-be-opsci/crate-profiles/mrc-ro-profile/0.1" },
       "hasPart": [
         { "@id": "observations.csv" },
         { "@id": "closure.ttl" }
@@ -28,7 +28,7 @@
       ]   
     },
     {
-      "@id": "https://w3id.org/vliz-be-opsci/crate-profiles/mrc-ro-crate/0.1",
+      "@id": "https://w3id.org/vliz-be-opsci/crate-profiles/mrc-ro-profile/0.1",
       "@type": ["CreativeWork", "Profile"],
       "name": "VLIZ MRC RO Crate Profile",
       "version": "0.1.0"
