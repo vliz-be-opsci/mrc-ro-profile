@@ -5,6 +5,10 @@ on:
   release:
     types: [published]
   workflow_dispatch:
+    inputs:
+      tag:
+        description: 'Tag to package (e.g. v0.1.0)'
+        required: true
 
 permissions:
   contents: write
@@ -17,17 +21,18 @@ jobs:
       - name: Checkout tagged commit
         uses: actions/checkout@v7
         with:
-          ref: ${{ github.event.release.tag_name }}
+          ref: ${{ github.event.inputs.tag || github.event.release.tag_name }}
 
       - name: Extract profile version from tag
         id: version
         run: |
+          TAG="${{ github.event.inputs.tag || github.event.release.tag_name }}"
           # Remove the leading 'v' from the tag, e.g. v0.1.0 -> 0.1.0
-          VERSION_WITHOUT_V="${GITHUB_REF#refs/tags/v}"
+          VERSION_WITHOUT_V="${TAG#v}"
           # Extract major.minor, e.g. 0.1.0 -> 0.1
           PROFILE_VERSION=$(echo "$VERSION_WITHOUT_V" | sed 's/\([0-9]*\.[0-9]*\)\..*/\1/')
           echo "profile_version=$PROFILE_VERSION" >> "$GITHUB_OUTPUT"
-          echo "Detected profile version: $PROFILE_VERSION from tag $GITHUB_REF"
+          echo "Detected profile version: $PROFILE_VERSION from tag $TAG"
 
       - name: Zip profile directory
         run: |
