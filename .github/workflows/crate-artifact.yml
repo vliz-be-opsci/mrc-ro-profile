@@ -27,6 +27,7 @@ jobs:
           # Extract major.minor, e.g. 0.1.0 -> 0.1
           PROFILE_VERSION=$(echo "$VERSION_WITHOUT_V" | sed 's/\([0-9]*\.[0-9]*\)\..*/\1/')
           echo "profile_version=$PROFILE_VERSION" >> "$GITHUB_OUTPUT"
+          echo "version_without_v=$VERSION_WITHOUT_V" >> "$GITHUB_OUTPUT"
           echo "Detected profile version: $PROFILE_VERSION from tag $TAG"
 
       - name: Zip profile directory
@@ -37,7 +38,9 @@ jobs:
             exit 1
           fi
           cd profiles/mrc-ro-profile
-          zip -r "mrc-ro-profile-${{ steps.version.outputs.profile_version }}.zip" "${{ steps.version.outputs.profile_version }}/"
+          EXTRACT_NAME="mrc-ro-profile-${{ steps.version.outputs.version_without_v }}"
+          cp -r "${{ steps.version.outputs.profile_version }}" "$EXTRACT_NAME"
+          zip -r "mrc-ro-profile-${{ steps.version.outputs.profile_version }}.zip" "$EXTRACT_NAME/"
 
       - name: Upload to GitHub Release
         uses: softprops/action-gh-release@v3
