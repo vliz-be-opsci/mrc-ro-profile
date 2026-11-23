@@ -124,3 +124,7 @@ Each `http://schema.org/Dataset` and `http://schema.org/File` in a conforming cr
 ## 5. Versioning
 
 The profile URI is versioned as `MAJOR.MINOR`. Patch versions of the Profile Crate (the `version` property) do not change the profile URI. Updates MAY add terms and SHOULD NOT remove or redefine terms already published.
+
+
+## 6. Release process
+When creating a minor release, the download URL for the .zip archive should be modified in the ro-crate-metadata.json

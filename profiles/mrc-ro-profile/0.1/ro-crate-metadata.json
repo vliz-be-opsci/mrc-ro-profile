@@ -82,7 +82,7 @@
             "@type": "DataDownload",
             "encodingFormat": ["application/zip", {"@id": "https://www.nationalarchives.gov.uk/PRONOM/x-fmt/263"}],
             "conformsTo": { "@id": "https://w3id.org/ro/crate" },
-            "downloadUrl": "https://github.com/vliz-be-opsci/mrc-ro-profile/archive/refs/tags/v0.1.0.zip"
+            "downloadUrl": "https://github.com/vliz-be-opsci/mrc-ro-profile/releases/download/v0.1.0/mrc-ro-profile-0.1.zip"
         },
         {
         "@id": "https://orcid.org/0000-0001-8327-0142",
